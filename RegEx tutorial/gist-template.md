@@ -69,9 +69,17 @@ The matching URL expression consists of multiple parts. These parts are split up
 ### Bracket Expressions
 Now that we have broken down our expression into four subexpressions we can begin to look into the specifics of how this expression functions. Brackets `[]` are used to match a range of characters. Bracket expression are also known positive character groups because they signify the characters that we want to include. In our third subexpression we have `[a-z\.]` the `a-z` signifies that for this part of the expression we would like to search and include any characters from a to z. 
 
-The brackets are used two more time in the URL expression. Once in the second subsection and again in the fourth subexpression. We now know that inside these brackets we are setting parameters for characters we would like to include.
+The brackets are used two more times in the URL expression. Once in the second subsection and again in the fourth subexpression. We now know that inside these brackets we are setting parameters for characters we would like to include.
 
 ### Quantifiers
+Now that we know the brackets are used to establish what characters we would like to include, we can begin to look inside these brackets for the specifics of what we would like to include in our search. There are a few quantifiers that appear in our URL expression, so lets start of by defining them.
+
+* - the wildcard symbol is used to match a pattern zero or more times
+
+? - the question mark is used to match a pattern zero or one time (essentially a way of making something 'optional')
+
+{} - the curly braces are used to set the limit of characters in a search pattern.
+
 
 ### OR Operator
 
