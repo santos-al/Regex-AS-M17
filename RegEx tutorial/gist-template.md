@@ -29,8 +29,26 @@ In this post I will be breaking down a URL matching regex. This expression below
 - [Look-ahead and Look-behind](#look-ahead-and-look-behind)
 
 ## Regex Components
+A regex is easily indentified by is "/" notiation. Unless it is placed inside a set of slashes it will not be read as an expression, but will instead be read as literal characters. In JavaScript you can also use a constructor to create a regular expression. For example...
+
+The following three examples are of matching URL expressions the first one uses the slash notation to identify it as a regular expression, while the second and third use a JavaScript constructor to achieve those same results.
+
+```
+/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+```
+
+```
+const re = RegEx("^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$")
+```
+
+```
+const re = RegEx(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+```
+
+All three of these examples achieve the same results through different syntax.
 
 ### Anchors
+The `^` and `$` are both knowns as anchors. The `^` indictes the beginning of the expression and the `$` indicates the end of it.
 
 ### Quantifiers
 
@@ -56,4 +74,5 @@ In this post I will be breaking down a URL matching regex. This expression below
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+Created by: Alexandre Santos
+Github : https://github.com/santos-al
