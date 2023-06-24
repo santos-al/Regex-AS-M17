@@ -51,6 +51,25 @@ All three of these examples achieve the same results through different syntax.
 The `^` and `$` are both knowns as anchors. The `^` indictes the beginning of the expression and the `$` indicates the end of it. In our URL example we can see that inbetween the slash notation we have `^` marking the start of the expression and the `$` indicating the end.
 
 ### Grouping and Capturing
+The matching URL expression consists of multiple parts. These parts are split up using parentheses `()`. Each of these sections inside the parentheses are known as subexpression. In our URL example we have four subexpressions that make up the complete expression.
+
+```
+(https?:\/\/)
+```
+```
+([\da-z\.-]+)
+```
+```
+([a-z\.]{2,6})
+```
+```
+([\/\w \.-]*)
+```
+
+### Bracket Expressions
+Now that we have broken down our expression into four subexpressions we can begin to look into the specifics of how this expression functions. Brackets `[]` are used to match a range of characters. Bracket expression are also known positive character groups because they signify the characters that we want to include. In our third subexpression we have `[a-z\.]` the `a-z` signifies that for this part of the expression we would like to search and include any characters from a to z. 
+
+The brackets are used two more time in the URL expression. Once in the second subsection and again in the fourth subexpression. We now know that inside these brackets we are setting parameters for characters we would like to include.
 
 ### Quantifiers
 
@@ -61,8 +80,6 @@ The `^` and `$` are both knowns as anchors. The `^` indictes the beginning of th
 ### Character Escapes
 
 ### Flags
-
-### Bracket Expressions
 
 ### Greedy and Lazy Match
 
