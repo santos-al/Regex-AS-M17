@@ -48,7 +48,9 @@ const re = RegEx(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$
 All three of these examples achieve the same results through different syntax.
 
 ### Anchors
-The `^` and `$` are both knowns as anchors. The `^` indictes the beginning of the expression and the `$` indicates the end of it.
+The `^` and `$` are both knowns as anchors. The `^` indictes the beginning of the expression and the `$` indicates the end of it. In our URL example we can see that inbetween the slash notation we have `^` marking the start of the expression and the `$` indicating the end.
+
+### Grouping and Capturing
 
 ### Quantifiers
 
@@ -59,8 +61,6 @@ The `^` and `$` are both knowns as anchors. The `^` indictes the beginning of th
 ### Character Escapes
 
 ### Flags
-
-### Grouping and Capturing
 
 ### Bracket Expressions
 
