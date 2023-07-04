@@ -1,4 +1,4 @@
-# RegEx Tutorial: Mathcing a URL
+# RegEx Tutorial: Matching a URL
 
 Regular expressions, aka regex, are a specific sequence of characters that are used to define search patterns. They are universal and accessible to any programming language such as JavaScript, Python, and C++ just to name a few. Not are they very useful for finding specific patterns in text, but also in verfiying user input in applications. If you want to create a program that requires a user to input an email, username, and password you can use regular expression to check if the user input meets a specific pattern. For example, if you want to only accept password with a certain character length you can create a regular expression to check if the user input matches that criteria. 
 
@@ -92,7 +92,12 @@ Right after our first wildcard we then get another wildcard meaning that the who
 
 #### Question Mark
 
-The question mark quantifier only appears once in our URL expression right at the end of the expression. 
+The question mark quantifier appears a few times in our URL expression. The first example is in our first subexpression.
+```
+(https?:\/\/)
+```
+In this case the internet protocol can either be 'http' or 'https'. Our second instance of this quantifier appears in the final portion of the expression.
+
 ```
 ([\/\w \.-]*)*\/?$/
 ```
@@ -139,9 +144,26 @@ In the context of our URL expression each of these classes that we defined only 
 ```
 ([\da-z\.-]+)
 ```
-This means that our URL name can include any digit or lowercase character for this portion of the URL.
+This means that our URL name can include any digit and/or lowercase character for this portion of the URL. The `\w` then appears once in the fourth subexpression. 
+```
+([\/\w \.-]*)
+```
+This character class is used for the 'path' portion of the URL. This means that any alphanumeric character, including the underscore, is valid.
 
 ### Character Escapes
+
+Character escapes are used when you need to match a specific character in your regular expression. They can be identified by the `\`.
+This specific tool is used multiple times in our URL expression. It appears at least once in each of our subexpressions, so lets take a look at a couple examples.
+
+The first example appears in our first subexpression.
+```
+(https?:\/\/)
+```
+These backslashes are used to require two slashes right after the colon in our URL. These character escapes show up again in our fourth subexpression.
+```
+([\/\w \.-]*)
+```
+The use of these two character escapes create a match for the `/` in the beginning and at the end for both the `.` and `-`.
 
 ### Flags
 
