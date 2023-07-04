@@ -15,17 +15,12 @@ In this post I will be breaking down a URL matching regex. This expression below
 
 ## Table of Contents
 
-- [Anchors](#anchors) YES
-- [Quantifiers](#quantifiers) YES
-- [Character Classes](#character-classes) YES
-- [Character Escapes](#character-escapes) YES
-- [Flags](#flags)
-- [Grouping and Capturing](#grouping-and-capturing) YES
-- [Bracket Expressions](#bracket-expressions) YES
-- [Greedy and Lazy Match](#greedy-and-lazy-match) YES
-- [Boundaries](#boundaries)
-- [Back-references](#back-references)
-- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
+- [Anchors](#anchors) 
+- [Quantifiers](#quantifiers) 
+- [Character Classes](#character-classes) 
+- [Character Escapes](#character-escapes) 
+- [Grouping and Capturing](#grouping-and-capturing) 
+- [Bracket Expressions](#bracket-expressions) 
 
 ## Regex Components
 A regex is easily indentified by is "/" notiation. Unless it is placed inside a set of slashes it will not be read as an expression, but will instead be read as literal characters. In JavaScript you can also use a constructor to create a regular expression. For example...
@@ -164,16 +159,6 @@ These backslashes are used to require two slashes right after the colon in our U
 ([\/\w \.-]*)
 ```
 The use of these two character escapes create a match for the `/` in the beginning and at the end for both the `.` and `-`.
-
-### Flags
-
-### Greedy and Lazy Match
-
-### Boundaries
-
-### Back-references
-
-### Look-ahead and Look-behind
 
 ## Author
 
