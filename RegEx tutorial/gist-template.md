@@ -17,7 +17,6 @@ In this post I will be breaking down a URL matching regex. This expression below
 
 - [Anchors](#anchors) YES
 - [Quantifiers](#quantifiers) YES
-- [OR Operator](#or-operator) NO
 - [Character Classes](#character-classes) YES
 - [Character Escapes](#character-escapes) YES
 - [Flags](#flags)
@@ -72,18 +71,75 @@ Now that we have broken down our expression into four subexpressions we can begi
 The brackets are used two more times in the URL expression. Once in the second subsection and again in the fourth subexpression. We now know that inside these brackets we are setting parameters for characters we would like to include.
 
 ### Quantifiers
-Now that we know the brackets are used to establish what characters we would like to include, we can begin to look inside these brackets for the specifics of what we would like to include in our search. There are a few quantifiers that appear in our URL expression, so lets start of by defining them.
+Now that we know the brackets are used to establish which characters we would like to include, we can begin to look inside these brackets for specifics in our search. There are a few quantifiers that appear in our URL expression, so lets start of by defining them.
 
-* - the wildcard symbol is used to match a pattern zero or more times
+`*` - the wildcard symbol is used to match a pattern zero or more times
 
-? - the question mark is used to match a pattern zero or one time (essentially a way of making something 'optional')
+`?` - the question mark is used to match a pattern zero or one time (essentially a way of making something 'optional')
 
-{} - the curly braces are used to set the limit of characters in a search pattern.
+`{}` - the curly braces are used to set the limit of characters in a search pattern.
 
+`+` - the plus sign is used to match a pattern one or more times.
 
-### OR Operator
+#### Wildcard
+In our example expression there are two wildcards used at the end.
+```
+([\/\w \.-]*)*\/?$/
+```
+The first wildcard is used along with the brackets. This means that that this this range that is set can repeat many times or even not at all. Since this portion is used to determine the 'path' in the URL, this expression allows for the range of characters set inside the brackets to be repeated multiple times or not at all. This simply means that the text set within the `/` used to set the path of the URL is indefinite.
+
+Right after our first wildcard we then get another wildcard meaning that the whole subexpression included within the `()` can repeat multiple times or not at all. This allows multiple `/` to be used to the determine the path in the URL.
+
+#### Question Mark
+
+The question mark quantifier only appears once in our URL expression right at the end of the expression. 
+```
+([\/\w \.-]*)*\/?$/
+```
+
+In this particular example is sets the `/` at the end of the URL as optional. Since a URL can sometimes include a URL at the end of the path this `?` considers that it either may or may not be there.
+
+#### Curly Brackets
+
+The curly brackets are used to set limits. It can be used in four different ways.
+
+`{ n }` - pattern matches exactly 'n' times
+
+`{ n, }` - pattern matches at least 'n' times
+
+`{ n, x }` - pattern matches at least 'n' times and at most 'x' times
+
+`{ , x }` - pattern matches at most 'x' times
+
+In our example this only appears once in our third subexpression.
+```
+([a-z\.]{2,6})
+```
+
+This is used to set a minimum of two and maximum of six characters. In the context of the full expression this means that the domain of the URL must be within this range to be considered valid.
+
+#### Plus Sign
+ 
+ In our expression the `+` only appears once in our second subexpression.
+```
+([\da-z\.-]+)
+```
+
+In this example the `+` is used to say that the URL must include at least one character, within the partucarlar range, after the internet protocol and before the domain name.
 
 ### Character Classes
+
+Character classes are a quick and efficient way of filtering out which characters are valid in an expression. Before going into how these classes affect our expression, it is best to define them outside the context of our expression. The following are the two classes that are included in our expression.
+
+`\w` - This expression includes any alphanumeric character from the alphabet including the underscore aswell. (This is a shorthand way of writing the following '[A-Za-z0-9_]')
+
+`\d` - This expression is used to match any digit. (This is a shorthand way of writing '[0-9]')
+
+In the context of our URL expression each of these classes that we defined only appear once. The `\d` appears in our second subexpression.
+```
+([\da-z\.-]+)
+```
+This means that our URL name can include any digit or lowercase character for this portion of the URL.
 
 ### Character Escapes
 
