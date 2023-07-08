@@ -1,11 +1,11 @@
 # RegEx Tutorial: Matching a URL
 
-Regular expressions, aka regex, are a specific sequence of characters that are used to define search patterns. They are universal and accessible to any programming language such as JavaScript, Python, and C++ just to name a few. Not are they very useful for finding specific patterns in text, but also in verfiying user input in applications. If you want to create a program that requires a user to input an email, username, and password you can use regular expression to check if the user input meets a specific pattern. For example, if you want to only accept password with a certain character length you can create a regular expression to check if the user input matches that criteria. 
+Regular expressions, aka regex, are a specific sequence of characters that are used to define search patterns. They are universal and accessible to any programming language such as JavaScript, Python, and C++ just to name a few. Not are they only very useful for finding specific patterns in text, but also in verfiying user input in applications. If you want to create a program that requires a user to input an email, username, and password you can use regular expression to check if the user input meets a specific pattern. For example, if you want to only accept password with a certain character length you can create a regular expression to check if the user input matches that criteria. 
 
 
 ## Summary
 
-In this post I will be breaking down a URL matching regex. This expression below uses a variety of regex commands to identify a URL within a set of characters.
+In this post I will be breaking down a URL matching regex. The expression below uses a variety of regex commands to identify a URL within a set of characters.
 
  Matching a URL:
 ``` 
@@ -17,15 +17,15 @@ In this post I will be breaking down a URL matching regex. This expression below
 
 - [Anchors](#anchors) 
 - [Quantifiers](#quantifiers) 
-- [Character Classes](#character-classes) 
-- [Character Escapes](#character-escapes) 
 - [Grouping and Capturing](#grouping-and-capturing) 
 - [Bracket Expressions](#bracket-expressions) 
+- [Character Classes](#character-classes) 
+- [Character Escapes](#character-escapes) 
 
 ## Regex Components
-A regex is easily indentified by is "/" notiation. Unless it is placed inside a set of slashes it will not be read as an expression, but will instead be read as literal characters. In JavaScript you can also use a constructor to create a regular expression. For example...
+A regex is easily indentified by its "/" notiation. Unless it is placed inside a set of slashes it will not be read as an expression, but will instead be read as literal characters. In JavaScript you can also use a constructor to create a regular expression.
 
-The following three examples are of matching URL expressions the first one uses the slash notation to identify it as a regular expression, while the second and third use a JavaScript constructor to achieve those same results.
+The following three examples are matching URL expressions. The first one uses the slash notation to identify it as a regular expression, while the second and third use JavaScript constructors to achieve those same results.
 
 ```
 /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
@@ -39,13 +39,13 @@ const re = RegEx("^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$
 const re = RegEx(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
 ```
 
-All three of these examples achieve the same results through different syntax.
+All three of these examples achieve the same results through the use of different syntax.
 
 ### Anchors
 The `^` and `$` are both knowns as anchors. The `^` indictes the beginning of the expression and the `$` indicates the end of it. In our URL example we can see that inbetween the slash notation we have `^` marking the start of the expression and the `$` indicating the end.
 
 ### Grouping and Capturing
-The matching URL expression consists of multiple parts. These parts are split up using parentheses `()`. Each of these sections inside the parentheses are known as subexpression. In our URL example we have four subexpressions that make up the complete expression.
+The matching URL expression consists of multiple parts. These parts are split up using parentheses `()`. Each of these sections inside the parentheses are known as subexpressions. In our URL example we have four subexpressions that make up the complete expression.
 
 ```
 (https?:\/\/)
@@ -61,7 +61,7 @@ The matching URL expression consists of multiple parts. These parts are split up
 ```
 
 ### Bracket Expressions
-Now that we have broken down our expression into four subexpressions we can begin to look into the specifics of how this expression functions. Brackets `[]` are used to match a range of characters. Bracket expression are also known positive character groups because they signify the characters that we want to include. In our third subexpression we have `[a-z\.]` the `a-z` signifies that for this part of the expression we would like to search and include any characters from a to z. 
+Now that we have broken down our expression into four subexpressions we can begin to look into the specifics of how this expression works. Brackets `[]` are used to match a range of characters. Bracket expressions are also known positive character groups because they signify the characters that we want to include. In our third subexpression we have `[a-z\.]` the `a-z` signifies that, for this part of the expression, we would like to search and include any characters from a to z. 
 
 The brackets are used two more times in the URL expression. Once in the second subsection and again in the fourth subexpression. We now know that inside these brackets we are setting parameters for characters we would like to include.
 
@@ -81,7 +81,7 @@ In our example expression there are two wildcards used at the end.
 ```
 ([\/\w \.-]*)*\/?$/
 ```
-The first wildcard is used along with the brackets. This means that that this this range that is set can repeat many times or even not at all. Since this portion is used to determine the 'path' in the URL, this expression allows for the range of characters set inside the brackets to be repeated multiple times or not at all. This simply means that the text set within the `/` used to set the path of the URL is indefinite.
+The first wildcard is used along with the brackets. This means that the range set can repeat many times or even not at all. Since this portion is used to determine the 'path' in the URL, this expression allows for the range of characters set inside the brackets to be repeated multiple times or not at all. This simply means that the text set within the `/` used to set the path of the URL is indefinite.
 
 Right after our first wildcard we then get another wildcard meaning that the whole subexpression included within the `()` can repeat multiple times or not at all. This allows multiple `/` to be used to the determine the path in the URL.
 
